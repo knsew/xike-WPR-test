@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -106,7 +107,7 @@ fun MachineCard(m: Machine, onClick: () -> Unit) {
     val bmp = remember(m.assetPhoto) { if (m.assetPhoto != null) assetBitmap(context, m.assetPhoto) else null }
     val st = warrantyStatus(m)
     val idle = idleDays(m)
-    Card(Modifier.fillMaxWidth(), onClick = onClick) {
+    Card(Modifier.fillMaxWidth().clickable { onClick() }) {
         Row(Modifier.padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             PhotoThumb(bmp)
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
